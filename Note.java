@@ -12,7 +12,7 @@ public class Note {
         this.timestamp = generateTimestamp();
      }
 
-     public Note(String category, String content, String timestamp) {
+     public Note(String timestamp, String category, String content) {
         this.category = category;
         this.content = content;
         this.timestamp = timestamp;
