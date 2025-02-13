@@ -27,10 +27,19 @@ public class Journal {
             System.out.println("You don't have any notes.");
         }
         else {
+            int i = 1;
             for (Note note : notes) {
-                System.out.println(note.toString());
+                System.out.println(i + ") " + note.toString());
+                i++;
             }
         }
+    }
+
+    public void removeNote() {
+        System.out.println("Enter note number: ");
+        int id = scanner.nextInt();
+        notes.remove(id-1);
+        saveToFile();
     }
 
     public void loadFromFile() {
@@ -59,10 +68,12 @@ public class Journal {
     }
 
     public void saveToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file_name))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file_name, false))) {
+            int i = 1;
             for (Note note : notes) {
-                writer.write(note.get_timestamp() + "|" + note.get_category() + "|" + note.get_content());
+                writer.write(i + ") " + note.get_timestamp() + "|" + note.get_category() + "|" + note.get_content());
                 writer.newLine();
+                i++;
             }
         }
         catch (IOException e) {
