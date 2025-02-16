@@ -1,19 +1,26 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner; 
 
-public class Journal {
-    private ArrayList<Note> notes = new ArrayList<>();
+public final class Journal {
+    private final ArrayList<Note> notes = new ArrayList<>();
     private final String file_name = "journal.txt";
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public Journal() {
         loadFromFile();
     }
 
     public void addNote() {
+        System.out.println();
         System.out.println("Category? ");
         String category = scanner.nextLine();
+        System.out.println();
         System.out.println("Content: ");
         String content = scanner.nextLine();
 
@@ -24,6 +31,7 @@ public class Journal {
     
     public void displayNotes() {
         if (notes.isEmpty()) {
+            System.out.println();
             System.out.println("You don't have any notes.");
         }
         else {
@@ -32,10 +40,12 @@ public class Journal {
                 System.out.println(i + ") " + note.toString());
                 i++;
             }
+            System.out.println();
         }
     }
 
     public void removeNote() {
+        System.out.println();
         System.out.println("Enter note number: ");
         int id = scanner.nextInt();
         notes.remove(id-1);

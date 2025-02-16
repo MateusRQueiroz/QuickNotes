@@ -2,9 +2,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Note {
-     private String category;
-     private String content; 
-     private String timestamp;
+     private final String category;
+     private final String content; 
+     private final String timestamp;
 
      public Note(String category, String content) {
         this.category = category;
